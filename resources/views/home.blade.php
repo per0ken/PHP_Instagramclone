@@ -7,14 +7,18 @@
         <img src="/images/profkep.jpg" style="height: 160px; width: 190px;" class="rounded-circle">
     </div>
     <div class="col-9 pt-5" style="padding-left: 2vw;">
-        <div><h1>lukacs03</h1></div>
+        <div class="d-flex justify-content-between align-items-baseline">
+            <h1>{{ $user->username }}</h1>
+            <a href="#">Add New Post</a>
+        </div>
         <div class="d-flex">
             <div style="padding-right: 25px;"><strong><b>3</b></strong> bejegyzés</div>
             <div style="padding-right: 25px;"><strong><b>315</b></strong> követő</div>
             <div style="padding-right: 25px;"><strong><b>362</b></strong> követés</div>
         </div>
-        <div class="pt-2"><b>Luki</b></div>
-        <div class="pt-2">22<br>DE-IK PTI</div>
+        <div class="pt-2"><b>{{ $user->profile->title }}</b></div>
+        <div class="pt-2">{{ $user->profile->description }}</div>
+        <div><a href="#">{{ $user->profile->url }}</a></div>
     </div>
 </div>
 
