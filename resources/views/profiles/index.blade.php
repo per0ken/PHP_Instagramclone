@@ -9,10 +9,16 @@
     <div class="col-9 pt-5" style="padding-left: 2vw;">
         <div class="d-flex justify-content-between align-items-baseline">
             <h1>{{ $user->username }}</h1>
-            <a href="#">Add New Post</a>
+            <a href="/profile/{{ $user->id }}/edit">
+                <button class="btn btn-primary">Edit Profile</button>
+            </a>
+            <a href="/p/create">
+                <button class="btn btn-primary">Add New Post</button>
+            </a>
         </div>
+
         <div class="d-flex">
-            <div style="padding-right: 25px;"><strong><b>3</b></strong> bejegyzés</div>
+            <div style="padding-right: 25px;"><strong><b>{{ $user->posts->count() }}</b></strong> bejegyzés</div>
             <div style="padding-right: 25px;"><strong><b>315</b></strong> követő</div>
             <div style="padding-right: 25px;"><strong><b>362</b></strong> követés</div>
         </div>
@@ -26,14 +32,13 @@
 
 <div class="container pt-5">
     <div class="row">
-        <div class="col-4">
-            <img src="/images/profkep.jpg" class="w-100">
-        </div>
-        <div class="col-4">
-            <img src="/images/profkep.jpg" class="w-100">
-        </div>
-        <div class="col-4">
-            <img src="/images/profkep.jpg" class="w-100">
-        </div>
+        @foreach($user->posts as $post)
+            <div class="col-4">
+                <a href="/p/{{ $post->id }}">
+                    <img src="/storage/{{ $post->image }}" class="w-100" style="object-fit: cover; height: 500px; padding-bottom: 25px">
+                </a>
+            </div>
+        @endforeach
+    </div>
 </div>
 @endsection

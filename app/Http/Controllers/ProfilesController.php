@@ -7,16 +7,13 @@ use App\Models\User;
 
 class ProfilesController extends Controller
 {
-    public function index($user)
+    public function index(User $user)
     {
-        $user = User::findOrFail($user);
+            return view('profiles.index', compact('user'));
+    }
 
-        if ($user->profile) {
-            return view('home', [
-                'user' => $user,
-            ]);
-        } else {
-            return abort(404);
-        }
+    public function edit(User $user)
+    {
+        return view('profiles.edit', compact('user'));
     }
 }
