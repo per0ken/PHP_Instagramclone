@@ -19,7 +19,7 @@
                            type="text"
                            class="form-control @error('caption') is-invalid @enderror"
                            name="caption"
-                           value="{{ old('name') }}"
+                           value="{{ old('caption') }}"
                            autocomplete="caption" autofocus>
 
                     @error('name')

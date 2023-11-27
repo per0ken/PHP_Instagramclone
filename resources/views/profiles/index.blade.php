@@ -4,17 +4,23 @@
 <div class="container d-flex" style="padding-left: 6vw">
     <div class="row p-5">
         <div class="col-3"></div>
-        <img src="/images/profkep.jpg" style="height: 160px; width: 190px;" class="rounded-circle">
+        <img src="{{ $user->profile->profileImage() }}" style="height: 160px; width: 190px;" class="rounded-circle w-100 h-100">
     </div>
     <div class="col-9 pt-5" style="padding-left: 2vw;">
         <div class="d-flex justify-content-between align-items-baseline">
             <h1>{{ $user->username }}</h1>
+
+            @can('update', $user->profile)
             <a href="/profile/{{ $user->id }}/edit">
                 <button class="btn btn-primary">Edit Profile</button>
             </a>
-            <a href="/p/create">
-                <button class="btn btn-primary">Add New Post</button>
-            </a>
+            @endcan
+
+            @can('update', $user->profile)
+                <a href="/p/create">
+                    <button class="btn btn-primary">Add New Post</button>
+                </a>
+            @endcan
         </div>
 
         <div class="d-flex">
